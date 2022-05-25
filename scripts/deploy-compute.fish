@@ -29,48 +29,25 @@ rsync $project_root/scripts/setup-scripts/ "root@$server_ip":/home/zzub/setup-sc
 
 # Upload source code
 rsync --exclude-from=$project_root/client/.gitignore $project_root/client/ "root@$server_ip":/home/zzub/client/
+rsync $project_root/client/data/ "root@$server_ip":/home/zzub/client/data/
+rsync $project_root/client/static/ "root@$server_ip":/home/zzub/client/static/
 rsync --exclude-from=$project_root/server/.gitignore $project_root/server/ "root@$server_ip":/home/zzub/server/
+rsync $project_root/server/data/ "root@$server_ip":/home/zzub/server/data/
+rsync $project_root/server/static/ "root@$server_ip":/home/zzub/server/static/
 
 # Build docker compose file
 python3 docker/docker-compose.py --server_ip=$server_ip docker/docker-compose.yaml
 # Upload docker files
 rsync $project_root/docker/docker-compose.yaml "root@$server_ip":/home/zzub/docker/
 rsync $project_root/docker/*.dockerfile "root@$server_ip":/home/zzub/docker/
-rsync $project_root/scripts/nginx.conf "root@$server_ip":/home/zzub/docker/
 
 ssh "root@$server_ip" 'bash /home/zzub/setup-scripts/0-setup-server.sh'
 dirs -c
 
+# Run the game
+pushd $project_root/game
+SERVER_HOST=$server_ip SERVER_PORT=5001 $HOME/bin/godot-4 --path $project_root/game
+dirs -c
+
 # Delete terraform infrastructure
 linode-cli linodes delete (linode-cli linodes list --json | jq 'map(select(.label == "zzub"))[0].id')
-
-# pushd $project_root
-# scp -r $project_root/server/ "root@$server_ip:/home"
-# cat $project_root/scripts/nginx.conf.template | sd --string-mode '{{server_ip}}' $server_ip >$project_root/scripts/nginx.conf
-# ssh "root@$server_ip" "mkdir -p /etc/nginx/sites-enabled/"
-# scp $project_root/scripts/nginx.conf "root@$server_ip:/etc/nginx/sites-enabled/jackbox-test-server"
-# scp $project_root/scripts/setup-server.sh "root@$server_ip:/home/setup-server.sh"
-# ssh "root@$server_ip" "source /home/setup-server.sh && cd /home/server && poetry run python -m jackbox_test_server"
-# dirs -c
-
-
-# ssh "root@$server_ip" 'mkdir -p /home/zzub/setup-scripts/'
-# ssh "root@$server_ip" 'mkdir -p /home/zzub/docker-images/'
-# rsync --recursive --times --update --verbose -h $project_root/docker/images/*.tar.gz "root@$server_ip":/home/zzub/docker-images/
-# rsync$project_root/docker/images/*.tar.gz "root@$server_ip":/home/zzub/docker-images/
-
-# # Build docker images
-# pushd $project_root
-# docker build --tag zzub-client -f docker/client.dockerfile .
-# docker build --tag zzub-server -f docker/server.dockerfile .
-# docker save zzub-client | pigz >docker/images/zzub-client.tar.gz
-# docker save zzub-server | pigz >docker/images/zzub-server.tar.gz
-# dirs -c
-
-
-# # Build image
-# pushd $project_root/packer
-# # packer build -var linode_api_token=$linode_api_token .
-# make
-# set image_id (cat manifest.json | jq -r .builds[0].artifact_id) && echo $image_id
-# dirs -c
