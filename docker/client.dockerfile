@@ -20,4 +20,4 @@ RUN SERVER_HOST=${SERVER_HOST} SERVER_PORT=${SERVER_PORT} npm run build
 FROM nginx:alpine
 
 COPY --from=builder /client/build /usr/share/nginx/html
-COPY ./client/nginx.conf /etc/nginx/default.conf
+COPY client/nginx.conf /etc/nginx/default.conf
