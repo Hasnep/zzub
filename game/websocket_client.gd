@@ -8,13 +8,13 @@ signal set_scene_id(player_id, scene_id)
 signal set_question(question, answers)
 signal reveal_answer(correct_answer_index)
 
-
-var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format({
-"SERVER_HOST":Global.server_host,
-"SERVER_PORT":Global.server_port,
-"SERVER_PATH": "server/host" if Global.is_production else "host",
-
-})
+var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format(
+	{
+		"SERVER_HOST": Global.server_host,
+		"SERVER_PORT": Global.server_port,
+		"SERVER_PATH": "server/host" if Global.is_production else "host",
+	}
+)
 var websocket_client = WebSocketClient.new()
 var json = JSON.new()
 
