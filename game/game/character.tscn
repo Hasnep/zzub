@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bd281ib6bdl0w"]
 
-[ext_resource type="Texture2D" uid="uid://cte23r1kwh3bm" path="res://textures/elvis-happy.png" id="1_tv72n"]
+[ext_resource type="Texture2D" uid="uid://b4lq4tse8xhs4" path="res://textures/elvis-happy.png" id="1_tv72n"]
 
 [node name="Character" type="VBoxContainer"]
 offset_right = 100.0
@@ -16,7 +16,6 @@ __meta__ = {
 offset_top = 6.0
 offset_right = 200.0
 offset_bottom = 206.0
-rect_min_size = Vector2(200, 200)
 texture = ExtResource( "1_tv72n" )
 ignore_texture_size = true
 stretch_mode = 5
@@ -26,7 +25,6 @@ offset_left = 25.0
 offset_top = 210.0
 offset_right = 175.0
 offset_bottom = 240.0
-rect_min_size = Vector2(150, 30)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 color = Color(0, 0, 0, 1)

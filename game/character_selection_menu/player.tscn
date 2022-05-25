@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://btc5e1qms3r4c"]
 
 [ext_resource type="Script" path="res://character_selection_menu/player.gd" id="1_6smf8"]
-[ext_resource type="Texture2D" uid="uid://c4seawfcmyewt" path="res://textures/elvis-joy.png" id="2_nabyi"]
+[ext_resource type="Texture2D" uid="uid://dw3n82us0qfws" path="res://textures/elvis-joy.png" id="2_nabyi"]
 
 [node name="Player" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2(100, 100)
 script = ExtResource( "1_6smf8" )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,7 +14,6 @@ __meta__ = {
 [node name="CharacterTexture" type="TextureRect" parent="."]
 offset_right = 1024.0
 offset_bottom = 100.0
-rect_min_size = Vector2(100, 100)
 texture = ExtResource( "2_nabyi" )
 ignore_texture_size = true
 stretch_mode = 5
