@@ -23,7 +23,7 @@
   console.log(ws_host);
   console.log(ws_port);
   const is_production = process.env.IS_PRODUCTION;
-  const server_path = is_production ? "server/player" : "player";
+  const server_path = is_production ? "player" : "server/player";
   const websocket_url = `ws://${ws_host}:${ws_port}/${server_path}/${player_id}`;
   console.log(websocket_url);
   let ws = new WebSocket(websocket_url);
