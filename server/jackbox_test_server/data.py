@@ -1,5 +1,5 @@
-from pathlib import Path
 import json
+from pathlib import Path
 
 from jackbox_test_server.dataclasses.dataclasses import Character, Colour
 

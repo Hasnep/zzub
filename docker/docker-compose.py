@@ -1,7 +1,7 @@
-import json
 import argparse
+import json
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Any, Dict, List
 
 parser = argparse.ArgumentParser()
 parser.add_argument("output_file_path", type=Path)
@@ -10,7 +10,7 @@ parser.add_argument("--server_ip", type=str)
 args = parser.parse_args()
 output_file_path: Path = args.output_file_path
 is_local: bool = args.is_local
-server_ip:str=args.server_ip
+server_ip: str = args.server_ip
 
 # def get_path_to_dockerfiles(is_local:bool)->Path:
 #     if is_local:

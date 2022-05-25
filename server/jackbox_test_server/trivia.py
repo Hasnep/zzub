@@ -1,9 +1,8 @@
-import httpx
-
-from typing import Dict, List, Any, Optional
-from pydantic import BaseModel, Field
-
 import json
+from typing import Any, Dict, List, Optional
+
+import httpx
+from pydantic import BaseModel, Field
 
 BASE_URL = "https://api.trivia.willfry.co.uk/questions"
 

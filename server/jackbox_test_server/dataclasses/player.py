@@ -1,7 +1,7 @@
-from dataclasses import dataclass
 import random
-from typing import Optional
 from dataclasses import dataclass
+from typing import Optional
+
 from fastapi import WebSocket
 from jackbox_test_server.data import CHARACTERS, COLOURS
 

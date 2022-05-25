@@ -37,5 +37,3 @@ func read_file(file_path: String) -> String:
 	var file_str = file.get_as_text()
 	file.close()
 	return file_str
-
-
