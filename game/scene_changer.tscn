@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://qmqggfidaflu"]
+
+[ext_resource type="Script" path="res://scene_changer.gd" id="1_b12d4"]
+[ext_resource type="Script" path="res://websocket_client.gd" id="2_5rfdg"]
+
+[node name="SceneChanger" type="Node"]
+script = ExtResource( "1_b12d4" )
+
+[node name="WebsocketClient" type="Node" parent="."]
+script = ExtResource( "2_5rfdg" )

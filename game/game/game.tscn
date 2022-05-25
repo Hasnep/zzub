@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=3 uid="uid://51byfeca7fkr"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_6nxl4"]
+[ext_resource type="PackedScene" uid="uid://dwvutus2a5n78" path="res://game/answer.tscn" id="2_1pyiq"]
+[ext_resource type="PackedScene" uid="uid://73kthhwr43x4" path="res://game/player_score.tscn" id="3_gry4d"]
+[ext_resource type="PackedScene" uid="uid://bd281ib6bdl0w" path="res://game/character.tscn" id="4_svfqy"]
+
+[node name="Game" type="CanvasLayer"]
+script = ExtResource( "1_6nxl4" )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionBox" type="VBoxContainer" parent="."]
+anchor_right = 0.75
+anchor_bottom = 0.6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionCategory" type="Label" parent="QuestionBox"]
+offset_right = 768.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Science"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Question" type="Label" parent="QuestionBox"]
+offset_top = 30.0
+offset_right = 768.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Answer1" parent="QuestionBox" instance=ExtResource( "2_1pyiq" )]
+offset_top = 57.0
+offset_right = 768.0
+offset_bottom = 87.0
+
+[node name="Answer2" parent="QuestionBox" instance=ExtResource( "2_1pyiq" )]
+offset_top = 91.0
+offset_right = 768.0
+offset_bottom = 121.0
+
+[node name="Answer3" parent="QuestionBox" instance=ExtResource( "2_1pyiq" )]
+offset_top = 125.0
+offset_right = 768.0
+offset_bottom = 155.0
+
+[node name="Answer4" parent="QuestionBox" instance=ExtResource( "2_1pyiq" )]
+offset_top = 159.0
+offset_right = 768.0
+offset_bottom = 189.0
+
+[node name="PlayerLeaderboard" type="VBoxContainer" parent="."]
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerScore" parent="PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+offset_right = 256.0
+offset_bottom = 60.0
+
+[node name="PlayerScore2" parent="PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 124.0
+
+[node name="PlayerScore3" parent="PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 188.0
+
+[node name="PlayerScore4" parent="PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 252.0
+
+[node name="PlayerScore5" parent="PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 316.0
+
+[node name="PlayerScore6" parent="PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+offset_top = 320.0
+offset_right = 256.0
+offset_bottom = 380.0
+
+[node name="Characters" type="HBoxContainer" parent="."]
+anchor_top = 0.6
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_right = 312.0
+theme_override_constants/separation = -448
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" parent="Characters" instance=ExtResource( "4_svfqy" )]
+offset_right = 584.0
+
+[node name="VBoxContainer2" parent="Characters" instance=ExtResource( "4_svfqy" )]
+offset_left = 136.0
+offset_right = 721.0
+
+[node name="VBoxContainer3" parent="Characters" instance=ExtResource( "4_svfqy" )]
+offset_left = 273.0
+offset_right = 858.0
+
+[node name="VBoxContainer4" parent="Characters" instance=ExtResource( "4_svfqy" )]
+offset_left = 410.0
+offset_right = 995.0
+
+[node name="VBoxContainer5" parent="Characters" instance=ExtResource( "4_svfqy" )]
+offset_left = 547.0
+offset_right = 1132.0
+
+[node name="VBoxContainer6" parent="Characters" instance=ExtResource( "4_svfqy" )]
+offset_left = 684.0
+offset_right = 1269.0

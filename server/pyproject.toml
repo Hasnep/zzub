@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "jackbox-test-server"
+version = "0.1.0"
+description = ""
+authors = ["Hannes <h@nnes.dev>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.73"
+uvicorn = { version = "^0.17",extras = ["standard"] }
+httpx = "^0.22"
+pydantic = "^1.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+mypy = "^0.931"
+flake8 = "^4.0"
+black = "^22.1"
+isort = "^5.10"
+ssort = "^0.11"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

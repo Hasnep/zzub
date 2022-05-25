@@ -1,0 +1,12 @@
+[
+  { "id": "red-salsa", "hex": "f94144ff" },
+  { "id": "orange-red", "hex": "f3722cff" },
+  { "id": "yellow-orange-color-wheel", "hex": "f8961eff" },
+  { "id": "mango-tango", "hex": "f9844aff" },
+  { "id": "maize-crayola", "hex": "f9c74fff" },
+  { "id": "pistachio", "hex": "90be6dff" },
+  { "id": "jungle-green", "hex": "43aa8bff" },
+  { "id": "steel-teal", "hex": "4d908eff" },
+  { "id": "queen-blue", "hex": "577590ff" },
+  { "id": "celadon-blue", "hex": "277da1ff" }
+]
