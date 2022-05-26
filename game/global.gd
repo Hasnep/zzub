@@ -61,7 +61,7 @@ var colours_file_path = "res://data/characters.json"
 var colours = get_colours(characters_file_path)
 
 
-func get_colour_by_id(colour: String) -> Color:
+func get_colour_by_id(colour_id: String) -> Color:
 	for colour in colours:
 		if colour.id == colour_id:
 			return Color(colour.hex)
