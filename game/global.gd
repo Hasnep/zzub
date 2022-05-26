@@ -57,8 +57,8 @@ func get_colours(file_path: String) -> Array:
 		return []
 
 
-var colours_file_path = "res://data/characters.json"
-var colours = get_colours(characters_file_path)
+var colours_file_path = "res://data/colours.json"
+var colours = get_colours(colours_file_path)
 
 
 func get_colour_by_id(colour_id: String) -> Color:
