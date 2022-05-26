@@ -27,7 +27,11 @@ func _ready():
 	websocket_client.data_received.connect(self._on_data_received)
 
 	# Initiate connection to the given URL
-	print("Connecting to websocket URL {websocket_url}".format({"websocket_url":websocket_url}))
+	print(
+		"Connecting to websocket URL {websocket_url}".format(
+			{"websocket_url": websocket_url}
+		)
+	)
 	var err = websocket_client.connect_to_url(websocket_url)
 	if err:
 		print("Unable to connect")
