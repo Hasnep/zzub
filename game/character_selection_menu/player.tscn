@@ -3,35 +3,44 @@
 [ext_resource type="Script" path="res://character_selection_menu/player.gd" id="1_6smf8"]
 [ext_resource type="Texture2D" uid="uid://dw3n82us0qfws" path="res://textures/elvis-joy.png" id="2_nabyi"]
 
-[node name="Player" type="VBoxContainer"]
+[node name="Player" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( "1_6smf8" )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_custom_anchors": false
 }
 
-[node name="CharacterTexture" type="TextureRect" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CharacterTexture" type="TextureRect" parent="VBoxContainer"]
 offset_right = 1024.0
-offset_bottom = 100.0
+offset_bottom = 540.0
+size_flags_vertical = 3
 texture = ExtResource( "2_nabyi" )
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PlayerName" type="Label" parent="."]
-offset_top = 104.0
+[node name="PlayerName" type="Label" parent="VBoxContainer"]
+offset_top = 544.0
 offset_right = 1024.0
-offset_bottom = 130.0
+offset_bottom = 570.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IsReady" type="Label" parent="."]
-offset_top = 134.0
+[node name="IsReady" type="Label" parent="VBoxContainer"]
+offset_top = 574.0
 offset_right = 1024.0
-offset_bottom = 160.0
+offset_bottom = 600.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Not ready"
 __meta__ = {

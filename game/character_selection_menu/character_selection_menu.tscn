@@ -8,13 +8,31 @@ script = ExtResource( "1_ashue" )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Players" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_custom_anchors": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+minimum_size = Vector2(0, 100)
+offset_right = 1024.0
+offset_bottom = 100.0
+text = "Let's welcome today's contestants!"
+horizontal_alignment = 1
+
+[node name="Players" type="HBoxContainer" parent="VBoxContainer"]
+offset_top = 104.0
+offset_right = 1024.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_custom_anchors": false
 }

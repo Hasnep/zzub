@@ -7,6 +7,7 @@ signal set_character_id(player_id, character_id)
 signal set_scene_id(player_id, scene_id)
 signal set_question(question, answers)
 signal reveal_answer(correct_answer_index)
+signal set_colour_id(player_id, colour_id)
 
 var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format(
 	{

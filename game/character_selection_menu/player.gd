@@ -1,11 +1,10 @@
-extends VBoxContainer
+extends ColorRect
 
 var my_player_id: String
 
-@onready var player_name_label = $"PlayerName"
-@onready var is_ready_label = $"IsReady"
-# @onready var character_name_label = $"CharacterName"
-@onready var character_texture = $"CharacterTexture"
+@onready var player_name_label = $"VBoxContainer/PlayerName"
+@onready var is_ready_label = $"VBoxContainer/IsReady"
+@onready var character_texture = $"VBoxContainer/CharacterTexture"
 
 
 func _on_set_player_name(player_id: String, player_name: String) -> void:
@@ -28,3 +27,8 @@ func _on_set_character_id(player_id: String, character_id: String) -> void:
 				{"character_id": character_id}
 			)
 		)
+
+
+func _on_set_colour_id(player_id: String, colour_id: String) -> void:
+	if player_id == my_player_id:
+		color = Global.get_colour_by_id(colour_id)
