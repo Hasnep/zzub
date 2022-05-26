@@ -8,22 +8,19 @@ offset_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_top = 6.0
-offset_right = 200.0
-offset_bottom = 206.0
+offset_top = 236.0
+offset_right = 100.0
+offset_bottom = 236.0
 texture = ExtResource( "1_tv72n" )
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 25.0
-offset_top = 210.0
-offset_right = 175.0
+offset_left = 50.0
+offset_top = 240.0
+offset_right = 50.0
 offset_bottom = 240.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -36,6 +33,3 @@ text = "player namesdfsdfsf"
 horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
