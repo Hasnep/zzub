@@ -3,7 +3,7 @@
 A high-level overview of the networking for Zzub.
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph Server
         http_server[HTTP server]
         server_ws[Websocket server]
