@@ -1,7 +1,7 @@
 <script lang="ts">
   import colours from "../data/colours.json";
   import characters from "../data/characters.json";
-  import { sample, get_colour_hex } from "./utils";
+  import { sample, get_colour_hex_by_id } from "./utils";
   import menu_scene_ids from "../data/menu_scene_ids.json";
   import CharacterSelectionMenu from "./CharacterSelectionMenu.svelte";
   import Game from "./Game.svelte";
@@ -62,7 +62,7 @@
   <html lang="en" />
 </svelte:head>
 
-<main style="background-color: #{get_colour_hex(colour_id)}">
+<main style="background-color: #{get_colour_hex_by_id(colour_id)}">
   {#if scene_id == "loading"}
     <h1>Loading</h1>
   {:else if scene_id == "character_selection_menu"}

@@ -14,7 +14,7 @@ export const get_character_name = (character_id: string) => {
   return characters.find((c) => c.id == character_id).name;
 };
 
-export const get_colour_hex = (colour_id: string) => {
+export const get_colour_hex_by_id = (colour_id: string) => {
   let colour_object = colours.find((c) => c.id == colour_id);
   if (colour_object === undefined) {
     return sample(colours).hex;
