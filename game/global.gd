@@ -6,21 +6,16 @@ var server_port = OS.get_environment("SERVER_PORT")
 
 enum Scene { CHARACTER_SELECTION_MENU, GAME }
 
-var characters_file_path = "res://data/characters.json"
-var characters = get_characters(characters_file_path)
 
-var colours_file_path = "res://data/characters.json"
-var colours = get_colours(characters_file_path)
+func read_file(file_path: String) -> String:
+	var file = File.new()
+	file.open(file_path, file.READ)
+	var file_str = file.get_as_text()
+	file.close()
+	return file_str
 
 
-func get_character_by_id(character_id: String) -> Dictionary:
-	for character in characters:
-		if character.id == character_id:
-			return character
-	print(
-		"Character id {character_id} not found.".format({"character_id": character_id})
-	)
-	return {}
+# Character data
 
 
 func get_characters(file_path: String) -> Array:
@@ -34,12 +29,21 @@ func get_characters(file_path: String) -> Array:
 		return []
 
 
-func read_file(file_path: String) -> String:
-	var file = File.new()
-	file.open(file_path, file.READ)
-	var file_str = file.get_as_text()
-	file.close()
-	return file_str
+var characters_file_path = "res://data/characters.json"
+var characters = get_characters(characters_file_path)
+
+
+func get_character_by_id(character_id: String) -> Dictionary:
+	for character in characters:
+		if character.id == character_id:
+			return character
+	print(
+		"Character id {character_id} not found.".format({"character_id": character_id})
+	)
+	return {}
+
+
+# Colour data
 
 
 func get_colours(file_path: String) -> Array:
@@ -51,6 +55,10 @@ func get_colours(file_path: String) -> Array:
 	else:
 		print(json.get_error_message())
 		return []
+
+
+var colours_file_path = "res://data/characters.json"
+var colours = get_colours(characters_file_path)
 
 
 func get_colour_by_id(colour: String) -> Colour:
