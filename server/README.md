@@ -8,9 +8,9 @@ flowchart LR
         http_server[HTTP server]
         server_ws[Websocket server]
     end
-    http_server --> react_app
+    http_server --> svelte_app
     subgraph Phone
-        react_app[React app]
+        svelte_app[Svelte app]
         phone_ws[Websocket client]
     end
     phone_ws <--> server_ws
