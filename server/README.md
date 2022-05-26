@@ -1,4 +1,6 @@
-# jackbox-test-server
+# Server
+
+A high-level overview of the networking for Zzub.
 
 ```mermaid
 flowchart TD
