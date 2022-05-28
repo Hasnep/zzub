@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Jackbox-test"
+config/name="Zzub"
 run/main_scene="res://scene_changer.tscn"
 config/icon="res://textures/icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")

@@ -12,6 +12,6 @@ RUN poetry install --no-dev
 # Run server
 WORKDIR /server
 COPY server/data/ data/
-COPY server/jackbox_test_server/ jackbox_test_server/
+COPY server/zzub_server/ zzub_server/
 
-CMD ["poetry", "run", "uvicorn", "jackbox_test_server:app", "--host", "0.0.0.0", "--port", "5001"]
+CMD ["poetry", "run", "uvicorn", "zzub_server:app", "--host", "0.0.0.0", "--port", "5001"]

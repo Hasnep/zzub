@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "jackbox-test-server"
+name = "zzub-server"
 version = "0.1.0"
 description = ""
 authors = ["Hannes <h@nnes.dev>"]

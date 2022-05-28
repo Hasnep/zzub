@@ -5,11 +5,11 @@ import uvicorn
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from jackbox_test_server.data import CHARACTERS, COLOURS
-from jackbox_test_server.dataclasses.dataclasses import Character, Colour
-from jackbox_test_server.dataclasses.player import Player
-from jackbox_test_server.trivia import get_question as get_question_object
-from jackbox_test_server.utils import shuffle
+from zzub_server.data import CHARACTERS, COLOURS
+from zzub_server.dataclasses.dataclasses import Character, Colour
+from zzub_server.dataclasses.player import Player
+from zzub_server.trivia import get_question as get_question_object
+from zzub_server.utils import shuffle
 
 
 class ConnectionManager:

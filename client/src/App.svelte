@@ -57,7 +57,7 @@
 </script>
 
 <svelte:head>
-  <title>Jackbox test</title>
+  <title>Zzub</title>
   <meta name="robots" content="noindex nofollow" />
   <html lang="en" />
 </svelte:head>

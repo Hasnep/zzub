@@ -1,4 +1,4 @@
-from jackbox_test_server import __version__
+from zzub_server import __version__
 
 
 def test_version():
