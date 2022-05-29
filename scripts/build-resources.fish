@@ -15,7 +15,8 @@ end
 set project_root $HOME/Documents/godot/jackbox-test
 move_directory $project_root/resources/textures $project_root/game/textures
 move_directory $project_root/resources/textures $project_root/client/static/images
-move_directory $project_root/resources/fonts $project_root/client/static/fonts
+move_directory $project_root/resources/fonts/woff $project_root/client/static/fonts
+move_directory $project_root/resources/fonts/ttf $project_root/game/fonts
 move_directory $project_root/client/build $project_root/server/static
 move_file $project_root/resources/data $project_root/server/data characters.json
 move_file $project_root/resources/data $project_root/server/data colours.json
