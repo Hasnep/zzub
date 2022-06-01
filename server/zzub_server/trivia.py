@@ -4,16 +4,18 @@ from typing import Any, Dict, List, Optional
 import httpx
 from pydantic import BaseModel, Field
 
-BASE_URL = "https://api.trivia.willfry.co.uk/questions"
+BASE_URL = "https://the-trivia-api.com/questions"
 
 
 class Question(BaseModel):
-    question_id: int = Field(alias="id")
+    question_id: str = Field(alias="id")
     question_type: str = Field(alias="type")
     question_category: str = Field(alias="category")
     question: str
     correct_answer: str = Field(alias="correctAnswer")
     incorrect_answers: List[str] = Field(alias="incorrectAnswers")
+    question_tags: List[str] = Field(alias="tags")
+    question_difficulty: str = Field(alias="difficulty")
 
 
 async def get_question(categories: Optional[List[str]] = None) -> Question:
@@ -43,6 +45,7 @@ async def get_questions(n: int, categories: Optional[List[str]]) -> List[Questio
 
     async with httpx.AsyncClient() as http_client:
         response = await http_client.get(BASE_URL, params=params)
+        print(f"Received response from API: `{response.text}`.")
         question_dicts: List[Dict[str, Any]] = json.loads(response.text)
         questions = [Question(**q_dict) for q_dict in question_dicts]
         print(questions)
