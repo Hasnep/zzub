@@ -114,6 +114,7 @@ class ConnectionManager:
         )
 
     async def set_scene_id(self, scene_id: str) -> None:
+        print(f"Setting the scene id to {scene_id}.")
         self.scene_id = scene_id
         await self.broadcast({"action": "set_scene_id", "scene_id": scene_id})
 
