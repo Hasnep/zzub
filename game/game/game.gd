@@ -13,11 +13,11 @@ signal get_question
 
 var json = JSON.new()
 
-#func _ready():
-#	websocket_client.set_question.connect(self._on_set_question)
-#	websocket_client.reveal_answer.connect(self._on_reveal_answer)
-#	self.get_question.connect(websocket_client._on_get_question)
-#	emit_signal("get_question")
+func _ready():
+	websocket_client.set_question.connect(self._on_set_question)
+	websocket_client.reveal_answer.connect(self._on_reveal_answer)
+	self.get_question.connect(websocket_client._on_get_question)
+	emit_signal("get_question")
 
 
 func _on_set_question(question: String, answers: Array) -> void:
