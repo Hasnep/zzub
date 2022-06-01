@@ -126,6 +126,11 @@ ul.answers {
 
     button.answer {
       width: 100%;
+
+      &.selected {
+        color: $colour-dark;
+        background-color: $colour-light;
+      }
     }
   }
 }

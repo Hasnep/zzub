@@ -3,8 +3,10 @@
   export let answers: string[];
   export let player_id: string;
   export let ws: WebSocket;
+  let selected_answer: number = null;
 
   export const answer_question = (i: number) => {
+    selected_answer = i;
     const data = {
       action: "answer_question",
       player_id: player_id,
@@ -20,9 +22,15 @@
 <ul class="answers">
   {#each answers as answer, i}
     <li>
-      <button on:click={() => answer_question(i)} class="answer">
-        {answer}
-      </button>
+      {#if i == selected_answer}
+        <button on:click={() => {}} class="answer selected">
+          {answer}
+        </button>
+      {:else}
+        <button on:click={() => answer_question(i)} class="answer">
+          {answer}
+        </button>
+      {/if}
     </li>
   {/each}
 </ul>
