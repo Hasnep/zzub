@@ -20,17 +20,19 @@
 <h1>{question}</h1>
 
 <ul class="answers">
-  {#each answers as answer, i}
-    <li>
-      {#if i == selected_answer}
-        <button on:click={() => {}} class="answer selected">
-          {answer}
-        </button>
-      {:else}
-        <button on:click={() => answer_question(i)} class="answer">
-          {answer}
-        </button>
-      {/if}
-    </li>
-  {/each}
+  {#if answers !== null}
+    {#each answers as answer, i}
+      <li>
+        {#if i == selected_answer}
+          <button on:click={() => {}} class="answer selected">
+            {answer}
+          </button>
+        {:else}
+          <button on:click={() => answer_question(i)} class="answer">
+            {answer}
+          </button>
+        {/if}
+      </li>
+    {/each}
+  {/if}
 </ul>
