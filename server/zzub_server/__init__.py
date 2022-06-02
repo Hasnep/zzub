@@ -229,7 +229,3 @@ async def player_websocket_endpoint(websocket: WebSocket, player_id: str):
         except WebSocketDisconnect:
             print(f"Disconnecting player {player_id}")
             connection_manager.disconnect_player(player_id)
-
-
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=5000, log_level="info")
