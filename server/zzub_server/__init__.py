@@ -177,11 +177,12 @@ async def host_websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_json()
             print(f"Received data from host: {data}")
 
-            if data["action"] == "get_question":
-                await connection_manager.set_question()
+            match data["action"]:
+                case "get_question":
+                    await connection_manager.set_question()
 
-            else:
-                print(f"Unknown action: {data}")
+                case _:
+                    print(f"Unknown action: {data}")
 
         except WebSocketDisconnect:
             print("host disconnected")
@@ -197,30 +198,33 @@ async def player_websocket_endpoint(websocket: WebSocket, player_id: str):
             data = await websocket.receive_json()
             print(f"Received data from player {player_id}: {data}")
 
-            if data["action"] == "set_player_name":
-                await connection_manager.set_player_name(player_id, data["player_name"])
+            match data["action"]:
+                case "set_player_name":
+                    await connection_manager.set_player_name(
+                        player_id, data["player_name"]
+                    )
 
-            elif data["action"] == "set_is_ready":
-                await connection_manager.set_is_ready(player_id, data["is_ready"])
+                case "set_is_ready":
+                    await connection_manager.set_is_ready(player_id, data["is_ready"])
 
-            elif data["action"] == "set_character_id":
-                await connection_manager.set_character_id(
-                    player_id, data["character_id"]
-                )
+                case "set_character_id":
+                    await connection_manager.set_character_id(
+                        player_id, data["character_id"]
+                    )
 
-            elif data["action"] == "set_colour_id":
-                await connection_manager.set_colour_id(player_id, data["colour_id"])
+                case "set_colour_id":
+                    await connection_manager.set_colour_id(player_id, data["colour_id"])
 
-            elif data["action"] == "get_question":
-                await connection_manager.set_question()
+                case "get_question":
+                    await connection_manager.set_question()
 
-            elif data["action"] == "answer_question":
-                await connection_manager.answer_question(
-                    data["player_id"], data["answer_index"]
-                )
+                case "answer_question":
+                    await connection_manager.answer_question(
+                        data["player_id"], data["answer_index"]
+                    )
 
-            else:
-                print(f"Unknown action: {data}")
+                case _:
+                    print(f"Unknown action: {data}")
 
         except WebSocketDisconnect:
             print(f"Disconnecting player {player_id}")
