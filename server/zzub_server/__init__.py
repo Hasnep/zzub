@@ -1,12 +1,8 @@
 import random
 from typing import Any, Dict, List, Optional
 
-import uvicorn
-from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from zzub_server.data import CHARACTERS, COLOURS
-from zzub_server.dataclasses.dataclasses import Character, Colour
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from zzub_server.data import CHARACTERS
 from zzub_server.dataclasses.player import Player
 from zzub_server.trivia import get_question as get_question_object
 from zzub_server.utils import shuffle
