@@ -3,10 +3,10 @@
   export let answers: string[];
   export let player_id: string;
   export let ws: WebSocket;
-  let selected_answer: number = null;
+  let selected_answer_index: number = null;
 
   export const answer_question = (i: number) => {
-    selected_answer = i;
+    selected_answer_index = i;
     const data = {
       action: "answer_question",
       player_id: player_id,
@@ -23,7 +23,7 @@
   {#if answers !== null}
     {#each answers as answer, i}
       <li>
-        {#if i == selected_answer}
+        {#if i == selected_answer_index}
           <button on:click={() => {}} class="answer selected">
             {answer}
           </button>
