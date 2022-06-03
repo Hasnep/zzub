@@ -158,7 +158,10 @@ class ConnectionManager:
             f"Revealing that the correct answer was answer {self.correct_answer_index}."
         )
         await self.broadcast(
-            {"action": "reveal_answer", "correct_answer_id": self.correct_answer_index}
+            {
+                "action": "reveal_answer",
+                "correct_answer_index": self.correct_answer_index,
+            }
         )
         for player_id, player in self.players.items():
             if player.answer_index == self.correct_answer_index:
