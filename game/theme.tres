@@ -1,4 +1,9 @@
-[gd_resource type="Theme" format=3 uid="uid://eqitrdce3ik2"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://eqitrdce3ik2"]
+
+[ext_resource type="FontData" uid="uid://3joi0uydv5mj" path="res://fonts/heebo-v20-latin-800.ttf" id="1_ssmaj"]
+
+[sub_resource type="Font" id="Font_fi5ir"]
+data/0 = ExtResource( "1_ssmaj" )
 
 [resource]
 Fonts/fonts/large = null
@@ -12,5 +17,5 @@ Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 0
 Label/constants/shadow_outline_size = 0
 Label/font_sizes/font_size = 16
-Label/fonts/font = null
+Label/fonts/font = SubResource( "Font_fi5ir" )
 Label/styles/normal = null
