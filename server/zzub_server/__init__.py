@@ -164,8 +164,11 @@ class ConnectionManager:
             }
         )
         for player_id, player in self.players.items():
+            # Add points to every player that got the answer right
             if player.answer_index == self.correct_answer_index:
                 await self.add_points(player_id, 10)
+            # Reset their answers
+            player.answer_index = None
 
     async def set_points(self, player_id: str, points: int):
         print(f"Setting the points of player {player_id} to {points}.")
