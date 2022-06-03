@@ -25,7 +25,7 @@ input,
 textarea,
 button {
   font-family: "Heebo", "Futura", "Helvetica", sans-serif;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-size: 1rem;
   font-weight: 800;
 }
@@ -60,7 +60,7 @@ img.character-picture {
 div.player-name {
   font-size: 1.5rem;
   text-align: center;
-  text-transform: uppercase;
+  // text-transform: uppercase;
 }
 
 .selection-grid {
@@ -83,7 +83,7 @@ div.player-name {
 
 .player-name-selection {
   text-align: center;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   background-color: $colour-dark;
   color: $colour-light;
   padding: 0.5rem;
