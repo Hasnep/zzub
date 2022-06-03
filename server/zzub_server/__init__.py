@@ -2,10 +2,11 @@ import random
 from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from zzub_server.data import CHARACTERS
-from zzub_server.dataclasses.player import Player
-from zzub_server.trivia import get_question as get_question_object
-from zzub_server.utils import shuffle
+
+from .data import CHARACTERS
+from .dataclasses.player import Player
+from .trivia import get_question as get_question_object
+from .utils import shuffle
 
 
 class ConnectionManager:

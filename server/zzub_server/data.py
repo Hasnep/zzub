@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from zzub_server.dataclasses.dataclasses import Character, Colour
+from .dataclasses.dataclasses import Character, Colour
 
 
 def get_characters():
