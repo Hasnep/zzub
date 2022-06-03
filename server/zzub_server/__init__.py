@@ -18,6 +18,16 @@ class ConnectionManager:
         self.players: Dict[str, Player] = {}
         self.scene_id: str = "character_selection_menu"
 
+    def _are_all_players_ready(self) -> bool:
+        return (
+            len(self.players) >= 2
+            and all(p.player_name is not None for p in self.players.values())
+            and all(p.is_ready for p in self.players.values())
+        )
+
+    def _have_all_players_answered(self) -> bool:
+        return all(p.answer_index is not None for p in self.players.values())
+
     def get_active_connections(self) -> List[WebSocket]:
         host_connections = (
             [self.host_websocket] if self.host_websocket is not None else []
@@ -118,13 +128,6 @@ class ConnectionManager:
         self.scene_id = scene_id
         await self.broadcast({"action": "set_scene_id", "scene_id": scene_id})
 
-    def _are_all_players_ready(self) -> bool:
-        return (
-            len(self.players) >= 2
-            and all(p.player_name is not None for p in self.players.values())
-            and all(p.is_ready for p in self.players.values())
-        )
-
     async def set_question(self) -> None:
         question_object = await get_question_object()
         self.question = question_object.question
@@ -152,9 +155,6 @@ class ConnectionManager:
         )
         if self._have_all_players_answered():
             await self.reveal_answer()
-
-    def _have_all_players_answered(self) -> bool:
-        return all(p.answer_index is not None for p in self.players.values())
 
     async def reveal_answer(self) -> None:
         print(

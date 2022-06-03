@@ -18,11 +18,6 @@ class Question(BaseModel):
     question_difficulty: str = Field(alias="difficulty")
 
 
-async def get_question(categories: Optional[List[str]] = None) -> Question:
-    questions = await get_questions(1, categories)
-    return questions[0]
-
-
 async def get_questions(n: int, categories: Optional[List[str]]) -> List[Question]:
     valid_categories = [
         "geography",
@@ -50,3 +45,8 @@ async def get_questions(n: int, categories: Optional[List[str]]) -> List[Questio
         questions = [Question(**q_dict) for q_dict in question_dicts]
         print(questions)
         return questions
+
+
+async def get_question(categories: Optional[List[str]] = None) -> Question:
+    questions = await get_questions(1, categories)
+    return questions[0]
