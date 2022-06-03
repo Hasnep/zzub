@@ -13,11 +13,11 @@ pydantic = "^1.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-mypy = "^0.931"
 flake8 = "^4.0"
 black = "^22.1"
 isort = "^5.10"
 ssort = "^0.11"
+pyright = "^1.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
