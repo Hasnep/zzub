@@ -33,7 +33,12 @@ repos:
     hooks:
       - id: black
         name: Check Python formatting
-
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+    -   id: flake8
+        name: Lint Python code
+        args: ["--config","server/setup.cfg"]
 
   # YAML
   - repo: https://github.com/pre-commit/pre-commit-hooks
