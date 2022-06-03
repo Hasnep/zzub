@@ -3,15 +3,16 @@ extends CanvasLayer
 signal get_question
 
 @onready var websocket_client
-@onready var question_label = $"QuestionBox/Question"
+@onready var question_label = $"Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox/Question"
 @onready var answer_nodes = [
-	$"QuestionBox/Answer1",
-	$"QuestionBox/Answer2",
-	$"QuestionBox/Answer3",
-	$"QuestionBox/Answer4"
+	$"Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox/Answer1",
+	$"Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox/Answer2",
+	$"Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox/Answer3",
+	$"Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox/Answer4",
 ]
 
 var json = JSON.new()
+
 
 func _ready():
 	websocket_client.set_question.connect(self._on_set_question)
