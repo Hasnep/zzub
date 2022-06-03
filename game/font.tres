@@ -1,0 +1,6 @@
+[gd_resource type="Font" load_steps=2 format=3 uid="uid://cav1v1uekdn86"]
+
+[ext_resource type="FontData" uid="uid://3joi0uydv5mj" path="res://fonts/heebo-v20-latin-800.ttf" id="1_65242"]
+
+[resource]
+data/0 = ExtResource( "1_65242" )

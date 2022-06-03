@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0i00s84pwb0h"]
+[gd_scene load_steps=3 format=3 uid="uid://c0i00s84pwb0h"]
 
 [ext_resource type="Script" path="res://character_selection_menu/character_selection_menu.gd" id="1_ashue"]
+[ext_resource type="Theme" uid="uid://eqitrdce3ik2" path="res://theme.tres" id="2_fyho0"]
 
 [node name="CharacterSelectMenu" type="CanvasLayer"]
 script = ExtResource( "1_ashue" )
@@ -22,6 +23,7 @@ __meta__ = {
 minimum_size = Vector2(0, 100)
 offset_right = 1024.0
 offset_bottom = 100.0
+theme = ExtResource( "2_fyho0" )
 text = "Let's welcome today's contestants!"
 horizontal_alignment = 1
 

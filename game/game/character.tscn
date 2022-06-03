@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bd281ib6bdl0w"]
 
-[ext_resource type="Texture2D" uid="uid://b4lq4tse8xhs4" path="res://textures/elvis-happy.png" id="1_tv72n"]
+[ext_resource type="Texture2D" uid="uid://b1cd6agqwi1wp" path="res://textures/elvis-happy.png" id="1_tv72n"]
 
 [node name="Character" type="VBoxContainer"]
 offset_right = 100.0

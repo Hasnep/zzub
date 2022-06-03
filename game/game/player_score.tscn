@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://73kthhwr43x4"]
 
-[ext_resource type="Texture2D" uid="uid://do22s0ag058iq" path="res://textures/wilbur-joy.png" id="1_45ow3"]
+[ext_resource type="Texture2D" uid="uid://40sgkcqspc48" path="res://textures/wilbur-joy.png" id="1_45ow3"]
 
 [node name="PlayerScore" type="HBoxContainer"]
 size_flags_horizontal = 3
