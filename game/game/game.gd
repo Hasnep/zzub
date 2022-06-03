@@ -11,8 +11,6 @@ signal get_question
 	$"Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox/Answer4",
 ]
 
-var json = JSON.new()
-
 
 func _ready():
 	websocket_client.set_question.connect(self._on_set_question)
