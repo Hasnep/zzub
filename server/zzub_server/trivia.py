@@ -31,7 +31,7 @@ async def get_questions(n: int, categories: Optional[List[str]]) -> List[Questio
         "society_and_culture",
         "sport_and_leisure",
     ]
-    params = {"limit": n}
+    params: Dict[str, Any] = {"limit": n}
     if categories is not None:
         for category in categories:
             if category not in valid_categories:
@@ -39,7 +39,7 @@ async def get_questions(n: int, categories: Optional[List[str]]) -> List[Questio
         params["categories"] = ",".join(categories)
 
     async with httpx.AsyncClient() as http_client:
-        response = await http_client.get(BASE_URL, params=params)
+        response = await http_client.get(BASE_URL, params=params)  # type: ignore
         print(f"Received response from API: `{response.text}`.")
         question_dicts: List[Dict[str, Any]] = json.loads(response.text)
         questions = [Question(**q_dict) for q_dict in question_dicts]
