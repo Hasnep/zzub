@@ -163,13 +163,25 @@ class ConnectionManager:
         await self.broadcast(
             {"action": "reveal_answer", "correct_answer_id": self.correct_answer_index}
         )
+        for player_id, player in self.players.items():
+            if player.answer_index == self.correct_answer_index:
+                await self.add_points(player_id, 10)
+
+    async def set_points(self, player_id: str, points: int):
+        print(f"Setting the points of player {player_id} to {points}.")
+        await self.broadcast(
+            {"action": "set_points", "player_id": player_id, "points": points}
+        )
+        self.players[player_id].points = points
+
+    async def add_points(self, player_id: str, points_delta: int):
+        print(f"Adding {points_delta} points to player {player_id}.")
+        await self.set_points(player_id, self.players[player_id].points + points_delta)
 
 
 connection_manager = ConnectionManager()
 
 app = FastAPI()
-
-# app.mount("/", StaticFiles(directory="static"), name="static")
 
 
 @app.websocket("/host")

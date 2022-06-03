@@ -14,3 +14,4 @@ class Player:
     character_id: str = random.choice([c.character_id for c in CHARACTERS])
     colour_id: str = random.choice([c.colour_id for c in COLOURS])
     answer_index: Optional[int] = None
+    points: int = 0
