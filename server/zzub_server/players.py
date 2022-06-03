@@ -3,7 +3,9 @@ from dataclasses import dataclass
 from typing import Optional
 
 from fastapi import WebSocket
-from zzub_server.data import CHARACTERS, COLOURS
+
+from .characters import CHARACTERS
+from .colours import COLOURS
 
 
 @dataclass

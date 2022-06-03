@@ -3,8 +3,8 @@ from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
-from .data import CHARACTERS
-from .dataclasses.player import Player
+from .characters import CHARACTERS
+from .players import Player
 from .trivia import get_question as get_question_object
 from .utils import shuffle
 

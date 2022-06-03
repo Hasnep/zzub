@@ -1,7 +1,12 @@
 import json
 from pathlib import Path
 
-from .dataclasses.dataclasses import Character, Colour
+from pydantic import BaseModel, Field
+
+
+class Character(BaseModel):
+    character_id: str = Field(alias="id")
+    name: str
 
 
 def get_characters():
@@ -10,11 +15,4 @@ def get_characters():
     return [Character(**c) for c in characters]
 
 
-def get_colours():
-    with open(Path(".") / "data" / "colours.json") as f:
-        colours = json.load(f)
-    return [Colour(**c) for c in colours]
-
-
 CHARACTERS = get_characters()
-COLOURS = get_colours()
