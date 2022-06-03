@@ -165,7 +165,7 @@ class ConnectionManager:
 
     async def set_points(self, player_id: str, points: int):
         print(f"Setting the points of player {player_id} to {points}.")
-        await self.broadcast(
+        await self.send_message_to_host(
             {"action": "set_points", "player_id": player_id, "points": points}
         )
         self.players[player_id].points = points
