@@ -14,6 +14,7 @@
   let answers: string[] = null;
   let player_id = Math.random().toString(36).substring(2, 6);
   let player_name: string = null;
+  let selected_answer_index: number = null;
   let character_id: string = null;
   let colour_id: string = sample(colours).id;
   let is_ready: boolean = false;
@@ -38,6 +39,7 @@
     if (action == "set_scene_id") {
       scene_id = message["scene_id"];
     } else if (action == "set_question") {
+      selected_answer_index = null;
       question = message["question"];
       answers = message["answers"];
     } else if (action == "reveal_answer") {
@@ -90,7 +92,13 @@
       bind:ws
     />
   {:else if scene_id == "game"}
-    <Game bind:player_id bind:question bind:answers bind:ws />
+    <Game
+      bind:player_id
+      bind:question
+      bind:answers
+      bind:selected_answer_index
+      bind:ws
+    />
   {:else}
     <p>Well something's gone wrong here...</p>
   {/if}

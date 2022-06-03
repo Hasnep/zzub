@@ -3,7 +3,7 @@
   export let answers: string[];
   export let player_id: string;
   export let ws: WebSocket;
-  let selected_answer_index: number = null;
+  export let selected_answer_index: number = null;
 
   export const answer_question = (i: number) => {
     selected_answer_index = i;
