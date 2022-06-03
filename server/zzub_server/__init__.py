@@ -151,15 +151,18 @@ class ConnectionManager:
             }
         )
         if self._have_all_players_answered():
-            await self.broadcast(
-                {
-                    "action": "reveal_answer",
-                    "correct_answer_index": self.correct_answer_index,
-                }
-            )
+            await self.reveal_answer()
 
     def _have_all_players_answered(self) -> bool:
         return all(p.answer_index is not None for p in self.players.values())
+
+    async def reveal_answer(self) -> None:
+        print(
+            f"Revealing that the correct answer was answer {self.correct_answer_index}."
+        )
+        await self.broadcast(
+            {"action": "reveal_answer", "correct_answer_id": self.correct_answer_index}
+        )
 
 
 connection_manager = ConnectionManager()
@@ -180,6 +183,9 @@ async def host_websocket_endpoint(websocket: WebSocket):
             match data["action"]:
                 case "get_question":
                     await connection_manager.set_question()
+
+                case "reveal_answer":
+                    await connection_manager.reveal_answer()
 
                 case _:
                     print(f"Unknown action: {data}")
