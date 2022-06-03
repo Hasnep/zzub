@@ -54,14 +54,18 @@ func _on_connection_connected(proto = ""):
 
 
 func _on_data_received():
+	# Parse data to string
 	var data_str: String = websocket_client.get_peer(1).get_packet().get_string_from_utf8()
-	print("Got raw data", data_str)
+
+	# Parse string to JSON
 	var err = json.parse(data_str)
 	if err:
 		print("Oh no!", json.get_error_message())
 		return
 	var data = json.get_data()
 	print("Got data from server: ", json.stringify(data))
+
+	# Take action based on message
 	match data.action:
 		"join":
 			emit_signal("join", data.player_id)
