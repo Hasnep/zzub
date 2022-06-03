@@ -42,9 +42,7 @@ async def get_questions(n: int, categories: Optional[List[str]]) -> List[Questio
         response = await http_client.get(BASE_URL, params=params)  # type: ignore
         print(f"Received response from API: `{response.text}`.")
         question_dicts: List[Dict[str, Any]] = json.loads(response.text)
-        questions = [Question(**q_dict) for q_dict in question_dicts]
-        print(questions)
-        return questions
+        return [Question(**q_dict) for q_dict in question_dicts]
 
 
 async def get_question(categories: Optional[List[str]] = None) -> Question:
