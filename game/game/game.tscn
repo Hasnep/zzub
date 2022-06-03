@@ -219,3 +219,6 @@ anchor_bottom = 0.0
 offset_top = 503.0
 offset_right = 300.0
 offset_bottom = 600.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
