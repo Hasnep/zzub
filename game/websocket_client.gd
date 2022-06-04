@@ -20,7 +20,7 @@ var websocket_client = WebSocketClient.new()
 var json = JSON.new()
 
 
-func _ready():
+func _ready() -> void:
 	# Connect base signals to get notified of connection open, close, and errors
 	websocket_client.connection_closed.connect(self._on_connection_closed)
 	websocket_client.connection_error.connect(self._on_connection_closed)
@@ -42,18 +42,18 @@ func _ready():
 	websocket_client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 
 
-func _on_connection_closed(was_clean = false):
+func _on_connection_closed(was_clean = false) -> void:
 	# was_clean will tell you if the disconnection was correctly notified by the remote peer before closing the socket.
 	print("Closed, clean: ", was_clean)
 	set_process(false)
 
 
-func _on_connection_connected(proto = ""):
+func _on_connection_connected(proto = "") -> void:
 	print("Connected with protocol: ", proto)
 	emit_signal("set_scene_id", "character_selection_menu")
 
 
-func _on_data_received():
+func _on_data_received() -> void:
 	# Parse data to string
 	var data_str: String = websocket_client.get_peer(1).get_packet().get_string_from_utf8()
 

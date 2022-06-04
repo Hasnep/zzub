@@ -4,7 +4,7 @@ extends Node
 @onready var websocket_client = $"WebsocketClient"
 
 
-func _ready():
+func _ready() -> void:
 	websocket_client.set_scene_id.connect(self._on_set_scene_id)
 
 

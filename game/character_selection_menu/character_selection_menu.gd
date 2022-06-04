@@ -6,7 +6,7 @@ extends CanvasLayer
 var player_scene = preload("res://character_selection_menu/player.tscn")
 
 
-func _ready():
+func _ready() -> void:
 	websocket_client.join.connect(self._on_join)
 
 
