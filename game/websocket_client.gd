@@ -9,6 +9,7 @@ signal set_question(question, answers)
 signal reveal_answer(correct_answer_index)
 signal set_colour_id(player_id, colour_id)
 signal send_all_player_data(player_data)
+signal set_player_score(player_id,score)
 
 var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format(
 	{
@@ -86,6 +87,8 @@ func _on_data_received() -> void:
 			emit_signal("reveal_answer", data.correct_answer_index)
 		"send_all_player_data":
 			emit_signal("send_all_player_data", data.player_data)
+		"set_player_score":
+			emit_signal("set_player_score", data.player_id, data.score)
 		_:
 			print("Unknown action: ", data)
 

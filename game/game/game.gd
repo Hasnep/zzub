@@ -62,6 +62,7 @@ func _add_player(
 	player_score.my_character_id = character_id
 	player_score.my_colour_id = colour_id
 	player_score.my_player_name = player_name
+	websocket_client.set_player_score.connect(player_score._on_set_player_score)
 	player_leaderboard.add_child(player_score)
 
 	var character = character_scene.instantiate()

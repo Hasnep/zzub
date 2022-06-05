@@ -21,3 +21,8 @@ func _ready() -> void:
 			{"character_id": my_character_id}
 		)
 	)
+
+func _on_set_player_score(player_id: String, score: int) -> void:
+	if player_id == my_player_id:
+		my_player_score = score
+	player_score_label.text = "{score}".format({"score":my_player_score})

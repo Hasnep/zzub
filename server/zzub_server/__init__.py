@@ -166,20 +166,22 @@ class ConnectionManager:
         for player_id, player in self.players.items():
             # Add points to every player that got the answer right
             if player.answer_index == self.correct_answer_index:
-                await self.add_points(player_id, 10)
+                await self.add_player_score(player_id, 10)
             # Reset their answers
             player.answer_index = None
 
-    async def set_points(self, player_id: str, points: int):
-        print(f"Setting the points of player {player_id} to {points}.")
+    async def set_player_score(self, player_id: str, score: int):
+        print(f"Setting the score of player {player_id} to {score}.")
         await self.send_message_to_host(
-            {"action": "set_points", "player_id": player_id, "points": points}
+            {"action": "set_player_score", "player_id": player_id, "score": score}
         )
-        self.players[player_id].points = points
+        self.players[player_id].score = score
 
-    async def add_points(self, player_id: str, points_delta: int):
-        print(f"Adding {points_delta} points to player {player_id}.")
-        await self.set_points(player_id, self.players[player_id].points + points_delta)
+    async def add_player_score(self, player_id: str, score_delta: int):
+        print(f"Adding {score_delta} to the score of player {player_id}.")
+        await self.set_player_score(
+            player_id, self.players[player_id].score + score_delta
+        )
 
     async def send_all_player_data(self):
         await self.send_message_to_host(
