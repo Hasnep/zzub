@@ -46,7 +46,8 @@ func _on_send_all_player_data(player_data: Array) -> void:
 	# Get the first question
 	timer.start(0.0)
 
-func _remove_all_players()->void:
+
+func _remove_all_players() -> void:
 	for child in player_leaderboard.get_children():
 		child.queue_free()
 

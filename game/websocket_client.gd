@@ -9,7 +9,7 @@ signal set_question(question, answers)
 signal reveal_answer(correct_answer_index)
 signal set_colour_id(player_id, colour_id)
 signal send_all_player_data(player_data)
-signal set_player_score(player_id,score)
+signal set_player_score(player_id, score)
 
 var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format(
 	{
