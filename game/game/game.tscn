@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://game/game.gd" id="1_6nxl4"]
 [ext_resource type="PackedScene" uid="uid://dwvutus2a5n78" path="res://game/answer.tscn" id="2_1pyiq"]
 [ext_resource type="Theme" uid="uid://eqitrdce3ik2" path="res://theme.tres" id="2_w3fc3"]
-[ext_resource type="PackedScene" uid="uid://73kthhwr43x4" path="res://game/player_score.tscn" id="3_gry4d"]
-[ext_resource type="PackedScene" uid="uid://bd281ib6bdl0w" path="res://game/character.tscn" id="4_svfqy"]
+[ext_resource type="PackedScene" uid="uid://bd281ib6bdl0w" path="res://game/character.tscn" id="4_j0osc"]
+[ext_resource type="PackedScene" uid="uid://73kthhwr43x4" path="res://game/player_score.tscn" id="5_ouyg0"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource( "1_6nxl4" )
@@ -12,47 +12,25 @@ script = ExtResource( "1_6nxl4" )
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="HSplitContainer" type="HSplitContainer" parent="Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 150
-dragger_visibility = 2
 __meta__ = {
 "_edit_use_custom_anchors": false
 }
 
-[node name="VSplitContainer" type="VSplitContainer" parent="Background/HSplitContainer"]
-offset_right = 770.0
-offset_bottom = 600.0
-split_offset = 150
-dragger_visibility = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/HSplitContainer/VSplitContainer"]
-offset_right = 770.0
-offset_bottom = 278.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_bottom = 30
-__meta__ = {
-"_edit_use_custom_anchors": false
-}
-
-[node name="QuestionBox" type="VBoxContainer" parent="Background/HSplitContainer/VSplitContainer/MarginContainer"]
+[node name="QuestionBox" type="VBoxContainer" parent="Background"]
 offset_left = 30.0
 offset_top = 30.0
-offset_right = 740.0
+offset_right = 738.0
 offset_bottom = 248.0
 theme = ExtResource( "2_w3fc3" )
+__meta__ = {
+"_edit_layout_mode": 0,
+"_edit_use_custom_anchors": false
+}
 
-[node name="QuestionCategory" type="Label" parent="Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox"]
-offset_right = 710.0
+[node name="QuestionCategory" type="Label" parent="Background/QuestionBox"]
+offset_right = 708.0
 offset_bottom = 24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Science"
@@ -60,164 +38,105 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Question" type="Label" parent="Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox"]
+[node name="Question" type="Label" parent="Background/QuestionBox"]
 offset_top = 28.0
-offset_right = 710.0
-offset_bottom = 52.0
+offset_right = 708.0
+offset_bottom = 78.0
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 22
 text = "dsfdfsfsdfsdfsdfsdfsdf sdf sdf sf sd sf?"
 
-[node name="Answer1" parent="Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox" instance=ExtResource( "2_1pyiq" )]
+[node name="Answer1" parent="Background/QuestionBox" instance=ExtResource( "2_1pyiq" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 56.0
-offset_right = 710.0
-offset_bottom = 93.0
+offset_top = 82.0
+offset_right = 708.0
+offset_bottom = 113.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Answer2" parent="Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox" instance=ExtResource( "2_1pyiq" )]
+[node name="Answer2" parent="Background/QuestionBox" instance=ExtResource( "2_1pyiq" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 97.0
-offset_right = 710.0
-offset_bottom = 135.0
+offset_top = 117.0
+offset_right = 708.0
+offset_bottom = 148.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Answer3" parent="Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox" instance=ExtResource( "2_1pyiq" )]
+[node name="Answer3" parent="Background/QuestionBox" instance=ExtResource( "2_1pyiq" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 139.0
-offset_right = 710.0
-offset_bottom = 176.0
+offset_top = 152.0
+offset_right = 708.0
+offset_bottom = 183.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Answer4" parent="Background/HSplitContainer/VSplitContainer/MarginContainer/QuestionBox" instance=ExtResource( "2_1pyiq" )]
+[node name="Answer4" parent="Background/QuestionBox" instance=ExtResource( "2_1pyiq" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 180.0
-offset_right = 710.0
+offset_top = 187.0
+offset_right = 708.0
 offset_bottom = 218.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Characters" type="HBoxContainer" parent="Background/HSplitContainer/VSplitContainer"]
+[node name="Characters" type="HBoxContainer" parent="Background"]
 offset_top = 278.0
-offset_right = 770.0
+offset_right = 774.0
 offset_bottom = 600.0
-grow_horizontal = 2
-grow_vertical = 0
 alignment = 2
 __meta__ = {
+"_edit_layout_mode": 0,
 "_edit_use_custom_anchors": false
 }
 
-[node name="VBoxContainer" parent="Background/HSplitContainer/VSplitContainer/Characters" instance=ExtResource( "4_svfqy" )]
+[node name="Character" parent="Background/Characters" instance=ExtResource( "4_j0osc" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 125.0
+offset_right = 385.0
 offset_bottom = 322.0
 
-[node name="VBoxContainer2" parent="Background/HSplitContainer/VSplitContainer/Characters" instance=ExtResource( "4_svfqy" )]
+[node name="Character2" parent="Background/Characters" instance=ExtResource( "4_j0osc" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 129.0
-offset_right = 254.0
+offset_left = 389.0
+offset_right = 774.0
 offset_bottom = 322.0
 
-[node name="VBoxContainer3" parent="Background/HSplitContainer/VSplitContainer/Characters" instance=ExtResource( "4_svfqy" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 258.0
-offset_right = 383.0
-offset_bottom = 322.0
-
-[node name="VBoxContainer4" parent="Background/HSplitContainer/VSplitContainer/Characters" instance=ExtResource( "4_svfqy" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 387.0
-offset_right = 512.0
-offset_bottom = 322.0
-
-[node name="VBoxContainer5" parent="Background/HSplitContainer/VSplitContainer/Characters" instance=ExtResource( "4_svfqy" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 516.0
-offset_right = 641.0
-offset_bottom = 322.0
-
-[node name="VBoxContainer6" parent="Background/HSplitContainer/VSplitContainer/Characters" instance=ExtResource( "4_svfqy" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 645.0
-offset_right = 770.0
-offset_bottom = 322.0
-
-[node name="PlayerLeaderboard" type="VBoxContainer" parent="Background/HSplitContainer"]
+[node name="PlayerLeaderboard" type="VBoxContainer" parent="Background"]
 minimum_size = Vector2(200, 0)
-offset_left = 770.0
-offset_right = 1024.0
-offset_bottom = 600.0
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -249.0
+offset_right = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( "2_w3fc3" )
 __meta__ = {
+"_edit_layout_mode": 1,
 "_edit_use_custom_anchors": false
 }
 
-[node name="PlayerScore" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+[node name="PlayerScore" parent="Background/PlayerLeaderboard" instance=ExtResource( "5_ouyg0" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 254.0
-offset_bottom = 82.0
+offset_right = 250.0
+offset_bottom = 298.0
 
-[node name="PlayerScore2" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
+[node name="PlayerScore2" parent="Background/PlayerLeaderboard" instance=ExtResource( "5_ouyg0" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 86.0
-offset_right = 254.0
-offset_bottom = 168.0
-
-[node name="PlayerScore3" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 172.0
-offset_right = 254.0
-offset_bottom = 254.0
-
-[node name="PlayerScore4" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 258.0
-offset_right = 254.0
-offset_bottom = 341.0
-
-[node name="PlayerScore5" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 345.0
-offset_right = 254.0
-offset_bottom = 427.0
-
-[node name="PlayerScore6" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 431.0
-offset_right = 254.0
-offset_bottom = 513.0
-
-[node name="PlayerScore7" parent="Background/HSplitContainer/PlayerLeaderboard" instance=ExtResource( "3_gry4d" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 517.0
-offset_right = 254.0
+offset_top = 302.0
+offset_right = 250.0
 offset_bottom = 600.0
 
 [node name="Timer" type="Timer" parent="."]

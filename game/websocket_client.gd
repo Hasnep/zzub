@@ -8,6 +8,7 @@ signal set_scene_id(player_id, scene_id)
 signal set_question(question, answers)
 signal reveal_answer(correct_answer_index)
 signal set_colour_id(player_id, colour_id)
+signal send_all_player_data(player_data)
 
 var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format(
 	{
@@ -83,6 +84,8 @@ func _on_data_received() -> void:
 			emit_signal("set_question", data.question, data.answers)
 		"reveal_answer":
 			emit_signal("reveal_answer", data.correct_answer_index)
+		"send_all_player_data":
+			emit_signal("send_all_player_data", data.player_data)
 		_:
 			print("Unknown action: ", data)
 
@@ -91,8 +94,15 @@ func _process(_delta: float) -> void:
 	websocket_client.poll()
 
 
-func _on_get_question() -> void:
-	var message_data = {"action": "get_question"}
+func _send_message_to_server(message_data: Dictionary) -> void:
 	var message_string = json.stringify(message_data)
 	print("Sending message to server: ", message_string)
 	websocket_client.get_peer(1).put_packet(message_string.to_utf8_buffer())
+
+
+func _on_get_question() -> void:
+	_send_message_to_server({"action": "get_question"})
+
+
+func _on_get_all_player_data() -> void:
+	_send_message_to_server({"action": "get_all_player_data"})

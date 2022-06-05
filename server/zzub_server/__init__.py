@@ -181,6 +181,22 @@ class ConnectionManager:
         print(f"Adding {points_delta} points to player {player_id}.")
         await self.set_points(player_id, self.players[player_id].points + points_delta)
 
+    async def send_all_player_data(self):
+        await self.send_message_to_host(
+            {
+                "action": "send_all_player_data",
+                "player_data": [
+                    {
+                        "player_id": player_id,
+                        "character_id": p.character_id,
+                        "colour_id": p.colour_id,
+                        "player_name": p.player_name,
+                    }
+                    for player_id, p in self.players.items()
+                ],
+            }
+        )
+
 
 connection_manager = ConnectionManager()
 
@@ -201,6 +217,9 @@ async def host_websocket_endpoint(websocket: WebSocket):
 
                 case "reveal_answer":
                     await connection_manager.reveal_answer()
+
+                case "get_all_player_data":
+                    await connection_manager.send_all_player_data()
 
                 case _:
                     print(f"Unknown action: {data}")
