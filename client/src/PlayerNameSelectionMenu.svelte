@@ -49,6 +49,8 @@
 
 <input
   on:change={(e) => set_player_name(e.target.value)}
-  placeholder={player_name}
+  placeholder={player_name === null
+    ? get_character_name(character_id)
+    : player_name}
   class="player-name-selection"
 />
