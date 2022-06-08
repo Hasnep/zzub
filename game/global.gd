@@ -38,7 +38,7 @@ func get_character_by_id(character_id: String) -> Dictionary:
 		if character.id == character_id:
 			return character
 	print(
-		"Character id {character_id} not found.".format({"character_id": character_id})
+		"Character id `{character_id}` not found.".format({"character_id": character_id})
 	)
 	return {}
 
@@ -65,5 +65,5 @@ func get_colour_by_id(colour_id: String) -> Color:
 	for colour in colours:
 		if colour.id == colour_id:
 			return Color(colour.hex)
-	print("Colour id {colour_id} not found.".format({"colour_id": colour_id}))
+	print("Colour id `{colour_id}` not found.".format({"colour_id": colour_id}))
 	return Color()
