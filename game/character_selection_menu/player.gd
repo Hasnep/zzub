@@ -6,6 +6,10 @@ var my_player_id: String
 @onready var is_ready_label = $"VBoxContainer/IsReady"
 @onready var character_texture = $"VBoxContainer/CharacterTexture"
 
+func _ready():
+	player_name_label.text = ""
+	is_ready_label.text = "Not ready yet"
+
 
 func _on_set_player_name(player_id: String, player_name: String) -> void:
 	if player_id == my_player_id:
