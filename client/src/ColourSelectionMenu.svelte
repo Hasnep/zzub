@@ -1,19 +1,15 @@
 <script lang="ts">
-  import characters from "../data/characters.json";
   import colours from "../data/colours.json";
-  import { get_next_menu_scene_id, get_previous_menu_scene_id } from "./utils";
+  import {
+    get_next_menu_scene_id,
+    get_previous_menu_scene_id,
+    set_colour_id,
+  } from "./utils";
 
   export let scene_id: string;
   export let character_id: string;
   export let colour_id: string;
   export let ws: WebSocket;
-
-  const set_colour_id = (_colour_id: string) => {
-    colour_id = _colour_id;
-    const data = { action: "set_colour_id", colour_id: colour_id };
-    console.log(data);
-    ws.send(JSON.stringify(data));
-  };
 </script>
 
 <div class="header split">
@@ -43,7 +39,10 @@
 <div class="selection-grid">
   {#each colours as colour}
     <button
-      on:click={() => set_colour_id(colour.id)}
+      on:click={() => {
+        colour_id = colour.id;
+        set_colour_id(ws, colour_id);
+      }}
       class="colour"
       style="background-color: #{colour.hex}"
     />

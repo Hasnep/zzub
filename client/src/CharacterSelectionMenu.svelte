@@ -2,24 +2,29 @@
   import { onMount } from "svelte";
   import characters from "../data/characters.json";
   import colours from "../data/colours.json";
-  import { get_character_name, get_next_menu_scene_id, sample } from "./utils";
+  import {
+    get_next_menu_scene_id,
+    sample,
+    set_character_id,
+    set_colour_id,
+  } from "./utils";
 
   export let scene_id: string;
   export let character_id: string;
+  export let colour_id: string;
   export let ws: WebSocket;
 
   onMount(() => {
     if (character_id === undefined || character_id === null) {
-      set_character_id(sample(characters).id);
+      character_id = sample(characters).id;
+      set_character_id(ws, character_id);
+    }
+
+    if (colour_id === undefined || colour_id === null) {
+      colour_id = sample(colours).id;
+      set_colour_id(ws, colour_id);
     }
   });
-
-  const set_character_id = (_character_id: string) => {
-    character_id = _character_id;
-    const data = { action: "set_character_id", character_id: character_id };
-    console.log(data);
-    ws.send(JSON.stringify(data));
-  };
 </script>
 
 <div class="header">
@@ -42,7 +47,10 @@
 <div class="selection-grid">
   {#each characters as character, i}
     <button
-      on:click={() => set_character_id(character.id)}
+      on:click={() => {
+        character_id = character.id;
+        set_character_id(ws, character_id);
+      }}
       class="character"
       style="background-color: #{colours[i].hex}"
     >
