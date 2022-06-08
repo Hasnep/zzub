@@ -14,6 +14,7 @@ signal get_all_player_data
 @onready var timer = $"Timer"
 @onready var player_leaderboard = $"Background/PlayerLeaderboard"
 @onready var characters = $"Background/Characters"
+@onready var question_category_label = $"Background/QuestionBox/QuestionCategoryLabel"
 
 # Preload scenes
 var player_score_scene = preload("res://game/player_score.tscn")
@@ -73,8 +74,9 @@ func _add_player(
 	characters.add_child(character)
 
 
-func _on_set_question(question: String, answers: Array) -> void:
+func _on_set_question(question: String, answers: Array, category: String) -> void:
 	question_label.text = question
+	question_category_label.text = category
 	for i in range(4):
 		answer_nodes[i].reset()
 		answer_nodes[i].set_label(answers[i])

@@ -138,6 +138,7 @@ class ConnectionManager:
                 "action": "set_question",
                 "question": self.question,
                 "answers": self.answers,
+                "category": question_object.question_category,
             }
         )
 

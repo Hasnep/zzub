@@ -5,7 +5,7 @@ signal set_player_name(player_id, player_name)
 signal set_is_ready(player_id, is_ready)
 signal set_character_id(player_id, character_id)
 signal set_scene_id(player_id, scene_id)
-signal set_question(question, answers)
+signal set_question(question, answers, category)
 signal reveal_answer(correct_answer_index)
 signal set_colour_id(player_id, colour_id)
 signal send_all_player_data(player_data)
@@ -82,7 +82,7 @@ func _on_data_received() -> void:
 		"set_scene_id":
 			emit_signal("set_scene_id", data.scene_id)
 		"set_question":
-			emit_signal("set_question", data.question, data.answers)
+			emit_signal("set_question", data.question, data.answers, data.category)
 		"reveal_answer":
 			emit_signal("reveal_answer", data.correct_answer_index)
 		"send_all_player_data":
