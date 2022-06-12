@@ -11,7 +11,7 @@ from .utils import shuffle
 
 class ConnectionManager:
     def __init__(self):
-        self.host_websocket: Optional[WebSocket] = None
+        self.game_websocket: Optional[WebSocket] = None
         self.players: Dict[str, Player] = {}
         self.scene_id: str = "character_selection_menu"
 
@@ -26,30 +26,30 @@ class ConnectionManager:
         return all(p.answer_index is not None for p in self.players.values())
 
     def get_active_connections(self) -> List[WebSocket]:
-        host_connections = (
-            [self.host_websocket] if self.host_websocket is not None else []
+        game_connections = (
+            [self.game_websocket] if self.game_websocket is not None else []
         )
         player_connections = [
             p.websocket for p in self.players.values() if p.websocket is not None
         ]
-        return host_connections + player_connections
+        return game_connections + player_connections
 
     async def connect_player(self, websocket: WebSocket, player_id: str):
         print(f"Accepting message from player {player_id}")
         await websocket.accept()
         if player_id not in self.players:
-            await self.join_host(player_id)
+            await self.join_game(player_id)
         self.players[player_id].websocket = websocket
 
-    async def connect_host(self, websocket: WebSocket):
+    async def connect_game(self, websocket: WebSocket):
         await websocket.accept()
-        self.host_websocket = websocket
+        self.game_websocket = websocket
 
     def disconnect_player(self, player_id: str):
         self.players[player_id].websocket = None
 
-    def disconnect_host(self):
-        self.host_websocket = None
+    def disconnect_game(self):
+        self.game_websocket = None
 
     async def send_message_to_player(self, message: Dict[str, Any], player_id: str):
         websocket = self.players[player_id].websocket
@@ -57,8 +57,8 @@ class ConnectionManager:
             raise ValueError("aaaaaa")
         await websocket.send_json(message)
 
-    async def send_message_to_host(self, message: Dict[str, Any]):
-        websocket = self.host_websocket
+    async def send_message_to_game(self, message: Dict[str, Any]):
+        websocket = self.game_websocket
         if websocket is None:
             raise ValueError("aaaaaa")
         await websocket.send_json(message)
@@ -67,15 +67,15 @@ class ConnectionManager:
         for connection in self.get_active_connections():
             await connection.send_json(message)
 
-    async def join_host(self, player_id: str):
+    async def join_game(self, player_id: str):
         print(f"Player {player_id} joining.")
         self.players[player_id] = Player()
-        await self.send_message_to_host({"action": "join", "player_id": player_id})
+        await self.send_message_to_game({"action": "join", "player_id": player_id})
 
     async def set_player_name(self, player_id: str, player_name: str):
         print(f"Setting the name of player {player_id} to {player_name}.")
         self.players[player_id].player_name = player_name
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {
                 "action": "set_player_name",
                 "player_id": player_id,
@@ -86,7 +86,7 @@ class ConnectionManager:
     async def set_is_ready(self, player_id: str, is_ready: bool):
         print(f"Setting the ready status of player {player_id} to {is_ready}.")
         self.players[player_id].is_ready = is_ready
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {"action": "set_is_ready", "player_id": player_id, "is_ready": is_ready}
         )
         if self._are_all_players_ready():
@@ -95,7 +95,7 @@ class ConnectionManager:
     async def set_character_id(self, player_id: str, character_id: str):
         print(f"Setting the character id of player {player_id} to {character_id}.")
         self.players[player_id].character_id = character_id
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {
                 "action": "set_character_id",
                 "player_id": player_id,
@@ -112,7 +112,7 @@ class ConnectionManager:
     async def set_colour_id(self, player_id: str, colour_id: str):
         print(f"Setting the colour id of player {player_id} to {colour_id}.")
         self.players[player_id].colour_id = colour_id
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {
                 "action": "set_colour_id",
                 "player_id": player_id,
@@ -144,7 +144,7 @@ class ConnectionManager:
 
     async def answer_question(self, player_id: str, answer_index: int) -> None:
         self.players[player_id].answer_index = answer_index
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {
                 "action": "answer_question",
                 "player_id": player_id,
@@ -173,7 +173,7 @@ class ConnectionManager:
 
     async def set_player_score(self, player_id: str, score: int):
         print(f"Setting the score of player {player_id} to {score}.")
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {"action": "set_player_score", "player_id": player_id, "score": score}
         )
         self.players[player_id].score = score
@@ -185,7 +185,7 @@ class ConnectionManager:
         )
 
     async def send_all_player_data(self):
-        await self.send_message_to_host(
+        await self.send_message_to_game(
             {
                 "action": "send_all_player_data",
                 "player_data": [
@@ -206,13 +206,13 @@ connection_manager = ConnectionManager()
 app = FastAPI()
 
 
-@app.websocket("/host")
-async def host_websocket_endpoint(websocket: WebSocket):
-    await connection_manager.connect_host(websocket)
+@app.websocket("/game")
+async def game_websocket_endpoint(websocket: WebSocket):
+    await connection_manager.connect_game(websocket)
     while True:
         try:
             data = await websocket.receive_json()
-            print(f"Received data from host: {data}")
+            print(f"Received data from game: {data}")
 
             match data["action"]:
                 case "get_question":
@@ -228,8 +228,8 @@ async def host_websocket_endpoint(websocket: WebSocket):
                     print(f"Unknown action: {data}")
 
         except WebSocketDisconnect:
-            print("host disconnected")
-            connection_manager.disconnect_host()
+            print("game disconnected")
+            connection_manager.disconnect_game()
 
 
 @app.websocket("/player/{player_id}")

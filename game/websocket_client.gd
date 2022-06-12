@@ -15,7 +15,7 @@ var websocket_url = "ws://{SERVER_HOST}:{SERVER_PORT}/{SERVER_PATH}".format(
 	{
 		"SERVER_HOST": Global.server_host,
 		"SERVER_PORT": Global.server_port,
-		"SERVER_PATH": "server/host" if Global.is_production else "host",
+		"SERVER_PATH": "server/game" if Global.is_production else "game",
 	}
 )
 var websocket_client = WebSocketClient.new()
