@@ -38,7 +38,9 @@ func get_character_by_id(character_id: String) -> Dictionary:
 		if character.id == character_id:
 			return character
 	print(
-		"Character id `{character_id}` not found.".format({"character_id": character_id})
+		"Character id `{character_id}` not found.".format(
+			{"character_id": character_id}
+		)
 	)
 	return {}
 
