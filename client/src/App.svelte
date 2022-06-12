@@ -59,7 +59,11 @@
   <html lang="en" />
 </svelte:head>
 
-<main style="background-color: #{get_colour_hex_by_id(colour_id)}">
+<div
+  id="main-bg"
+  style="background-color: #{get_colour_hex_by_id(colour_id)}"
+/>
+<main>
   {#if scene_id == "loading"}
     <h1>Loading</h1>
   {:else if scene_id == "character_selection_menu"}
