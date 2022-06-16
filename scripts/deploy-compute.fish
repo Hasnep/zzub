@@ -2,9 +2,6 @@ set project_root $HOME/Documents/godot/jackbox-test
 cd $project_root
 alias rsync='rsync --recursive --times --update --verbose --human-readable --compress --mkpath'
 
-# Build resources
-source $project_root/scripts/build-resources.fish
-
 # Deploy terraform infrastructure
 pushd $project_root/terraform
 terraform init
