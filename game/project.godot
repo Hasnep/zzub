@@ -17,4 +17,6 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 [autoload]
 
+Characters="*res://data/characters.gd"
+Colours="*res://data/colours.gd"
 Global="*res://global.gd"

@@ -40,3 +40,9 @@ move_file $project_root/resources/data $project_root/client/data colours.json
 move_file $project_root/resources/data $project_root/client/data menu_scene_ids.json
 move_file $project_root/resources/data $project_root/game/data characters.json
 move_file $project_root/resources/data $project_root/game/data colours.json
+
+# Convert files
+echo "Converting $project_root/game/data/characters.json to $project_root/game/data/characters.gd"
+echo -e "extends Node\nvar data = "(cat $project_root/game/data/characters.json | string collect) >$project_root/game/data/characters.gd
+echo "Converting $project_root/game/data/colours.json to $project_root/game/data/colours.gd"
+echo -e "extends Node\nvar data = "(cat $project_root/game/data/colours.json | string collect) >$project_root/game/data/colours.gd
