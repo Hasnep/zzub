@@ -60,7 +60,7 @@ class ConnectionManager:
     async def send_message_to_game(self, message: Dict[str, Any]):
         websocket = self.game_websocket
         if websocket is None:
-            raise ValueError("aaaaaa")
+            raise ValueError("Could not send message to game.")
         await websocket.send_json(message)
 
     async def broadcast(self, message: Dict[str, Any]):
