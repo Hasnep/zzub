@@ -35,7 +35,7 @@ class ConnectionManager:
         return game_connections + player_connections
 
     async def connect_player(self, websocket: WebSocket, player_id: str):
-        print(f"Accepting message from player {player_id}")
+        print(f"Accepting message from player {player_id}.")
         await websocket.accept()
         if player_id not in self.players:
             await self.join_game(player_id)
@@ -54,7 +54,7 @@ class ConnectionManager:
     async def send_message_to_player(self, message: Dict[str, Any], player_id: str):
         websocket = self.players[player_id].websocket
         if websocket is None:
-            raise ValueError("aaaaaa")
+            raise ValueError(f"Player {player_id} did not have a websocket.")
         await websocket.send_json(message)
 
     async def send_message_to_game(self, message: Dict[str, Any]):
