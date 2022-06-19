@@ -14,7 +14,7 @@ pydantic = "^1.9"
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
 flake8 = "^4.0"
-black = "^22.1"
+black = "^22.3"
 isort = "^5.10"
 ssort = "^0.11"
 pyright = "^1.1"
