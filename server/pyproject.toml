@@ -6,9 +6,9 @@ authors = ["Hannes <h@nnes.dev>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.73"
+fastapi = "^0.78"
 uvicorn = { version = "^0.17", extras = ["standard"] }
-httpx = "^0.22"
+httpx = "^0.23"
 pydantic = "^1.9"
 
 [tool.poetry.dev-dependencies]
